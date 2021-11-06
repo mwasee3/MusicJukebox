@@ -59,14 +59,6 @@ app.use(function(req, res, next) {
   });
 });
 
-app.use(function(err, req, res, next) {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  res.status(err.status || 500);
-  res.render('error');
-});
-
 app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/index.hbs`, (err) => {
     if (err) {
@@ -76,8 +68,17 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/signIn', (req, res) => {
-  res.sendFile(`${__dirname}/signIn.hbs`, (err) => {
+app.use(function(err, req, res, next) {
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+
+app.get('/error', (req, res) => {
+  res.sendFile(`${__dirname}/error.hbs`, (err) => {
     if (err) {
       console.log(err);
       res.end(err.message);
@@ -94,8 +95,8 @@ app.get('/createAccount', (req, res) => {
   });
 });
 
-app.get('/error', (req, res) => {
-  res.sendFile(`${__dirname}/error.hbs`, (err) => {
+app.get('/signIn', (req, res) => {
+  res.sendFile(`${__dirname}/signIn.hbs`, (err) => {
     if (err) {
       console.log(err);
       res.end(err.message);
