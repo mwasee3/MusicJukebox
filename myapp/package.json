@@ -23,5 +23,13 @@
     "sqlite3": "^4.2.0",
     "static-favicon": "^2.0.0-alpha",
     "stormpath": "^0.0.1"
-  }
+  },
+  "main": "app.js",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

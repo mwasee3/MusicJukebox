@@ -16,10 +16,11 @@ router.post('/', function(req, res, next) {
     var schema = new passwordValidator();
 
     schema.is().min(8)
-    schema.is().max(100)
-    schema.has().uppercase()
-    schema.has().digits()
     schema.has().not().spaces()
+    schema.is().max(100)
+    schema.has().digits()
+    schema.has().uppercase()
+    
 
     var isValid = schema.validate(password)
     console.log(isValid)
