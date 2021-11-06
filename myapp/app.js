@@ -5,12 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+var dashboard = require('./routes/dashboard.js');
 var usersRouter = require('./routes/users');
+var submit = require('./routes/submit');
 var createAccount = require('./routes/createNewAccount');
 var signIn = require('./routes/log_in');
-var submit = require('./routes/submit');
 var submitLogin = require('./routes/login_Submit');
-var dashboard = require('./routes/dashboard.js');
 
 var session = require('express-session');
 const passport = require('passport');
