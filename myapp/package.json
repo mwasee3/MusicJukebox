@@ -18,6 +18,7 @@
     "passport": "^0.5.0",
     "passport-local": "^1.0.0",
     "passport-stormpath": "^1.0.3",
+    "password-validator": "^5.2.1",
     "pug": "^3.0.2",
     "sqlite3": "^4.2.0",
     "static-favicon": "^2.0.0-alpha",

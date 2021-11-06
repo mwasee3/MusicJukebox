@@ -1,57 +1,54 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-var user = require('../model/user-structure.js');
-let userData = fs.readFileSync('./users.json');
-let siteUsers = JSON.parse(userData);
+var passwordValidator = require('password-validator');
 
-router.use(express.urlencoded({extended:false}))
 
-router.post('/', async(req, res)=>{
-    try{
-        if(checkPasswordLength(req.body.password)==false){
-            var error = "Kindly input password length of minimum 8 characters.";
-            res.render('error', {error: error});
-        } else {
-            siteUsers.push({
-                "id":Date.now().toString(),
-                "first_name":req.body.first_name,
-                "last_name": req.body.last_name,
-                "email": req.body.email,
-                "password": req.body.password
-            })
-            const usersString = JSON.stringify(siteUsers)
-            for(var x = 0; x < usersString.length; x++){
-                if(user.email!=usersString[x].email){
-                    siteUsers.push(user);
-                    x = usersString.length;
-                } else {
-                    usersString[x].email = user.email
-                    x = usersString.length;
-                }
-            }
-            fs.writeFile('./users.json', usersString, err => {
-                if(err){
-                    console.log('Error writing file', err)
-                }else{
-                    console.log('Successfully wrote to file')
-                    res.render('confirmation', {first_name: user.first_name, last_name: user.last_name});
-                }
-            })
-        }
+/* GET home page. */
+router.post('/', function(req, res, next) {
+    
+    var first_name = req.body.first_name;
+    var last_name = req.body.last_name;
+    var email = req.body.email;
+    var password = req.body.password;
 
-    }catch{
-        res.redirect('/createAcccount')
-    }
-})
+    //Enforcing strong password
+    var schema = new passwordValidator();
 
-function checkPassword(password){
-    if(password.length < 8){
-        return false
+    schema.is().min(8)
+    schema.is().max(100)
+    schema.has().uppercase()
+    schema.has().digits()
+    schema.has().not().spaces()
+
+    var isValid = schema.validate(password)
+    console.log(isValid)
+
+    if(isValid===false)
+    {
+        var error = "Password is not strong";
+        res.render('error', {error:error});
     }
 
-    else return true
-}
+    else{
+        console.log("first_name: " + first_name + "last_name: " + last_name + " Email: " + email + " Password: " + password);
 
-exports.checkPassword = checkPassword
-module.exports = router
+        'use strict';
+            var randomValue = Math.random() * 123;
+        let users = [{ 
+            id: randomValue,
+            first_name: first_name,
+            last_name: last_name, 
+            email: email,
+            password: password
+        }];
+        
+        let data = JSON.stringify(users);
+        fs.writeFileSync('users.json', data);
+
+        res.render('confirmation', { first_name : first_name, last_name: last_name});
+    }
+
+});
+
+module.exports = router;
