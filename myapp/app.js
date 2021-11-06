@@ -4,12 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
+var test = require('./routes/index');
 var dashboard = require('./routes/dashboard.js');
-var usersRouter = require('./routes/users');
+var clientsRouter = require('./routes/users');
 var submit = require('./routes/submit');
-var createAccount = require('./routes/createNewAccount');
-var signIn = require('./routes/log_in');
+var makeAccount = require('./routes/createNewAccount');
+var log_in = require('./routes/log_in');
 var submitLogin = require('./routes/login_Submit');
 
 var session = require('express-session');
@@ -41,10 +41,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/createAccount', createAccount);
-app.use('/signIn', signIn);
+app.use('/', test);
+app.use('/users', clientsRouter);
+app.use('/createAccount', makeAccount);
+app.use('/signIn', log_in);
 app.use('/submit', submit);
 app.use('/loginSubmit', submitLogin);
 app.use('/dashboard', dashboard);
