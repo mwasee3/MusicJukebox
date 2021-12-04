@@ -1,6 +1,7 @@
+
 const LocalStrategy = require('passport-local').Strategy;
 var sqlite3 = require('sqlite3').verbose()
-let databaseOperations = require('../database.js');
+let databaseOperations = require('./database.js');
 
 
 module.exports = function(passport) {
@@ -21,5 +22,4 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
 	done(null, user); //you can access with req.user
 });
-
 }

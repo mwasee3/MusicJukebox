@@ -1,8 +1,11 @@
+
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var passwordValidator = require('password-validator');
-
+const passport = require('passport');
+let databaseOperations = require('../config/database.js');
+console.log(databaseOperations);
 
 /* GET home page. */
 router.post('/', function(req, res, next) {
@@ -46,7 +49,7 @@ router.post('/', function(req, res, next) {
         
         let data = JSON.stringify(users);
         fs.writeFileSync('users.json', data);
-
+        databaseOperations.createProfile(users);
         res.render('confirmation', { first_name : first_name, last_name: last_name});
     }
 
