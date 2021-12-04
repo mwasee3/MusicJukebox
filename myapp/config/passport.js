@@ -12,7 +12,7 @@ passport.use(new LocalStrategy({
 	passwordField: 'password'
 }, function(username, password, done) {
 	console.log(username);
-	databaseOperations.authenticateUser(username, password, done);
+//	databaseOperations.authenticateUser(username, password, done);
 }));
 
 passport.serializeUser(function(user, done) {

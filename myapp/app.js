@@ -10,6 +10,8 @@ var clientsRouter = require('./routes/users');
 var submit = require('./routes/submit');
 var makeAccount = require('./routes/createNewAccount');
 var log_in = require('./routes/log_in');
+var SearchBar = require('./routes/SearchBar');
+var SearchSubmit = require('./routes/SearchBar_Submit');
 var submitLogin = require('./routes/login_Submit');
 
 var session = require('express-session');
@@ -45,7 +47,9 @@ app.use('/', test);
 app.use('/users', clientsRouter);
 app.use('/createAccount', makeAccount);
 app.use('/signIn', log_in);
+app.use('/SearchBar',SearchBar);
 app.use('/submit', submit);
+app.use('/SearchBarSubmit',SearchSubmit);
 app.use('/loginSubmit', submitLogin);
 app.use('/dashboard', dashboard);
 
@@ -97,6 +101,15 @@ app.get('/createAccount', (req, res) => {
 
 app.get('/signIn', (req, res) => {
   res.sendFile(`${__dirname}/signIn.hbs`, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err.message);
+    }
+  });
+});
+
+app.get('/SearchBar', (req, res) => {
+  res.sendFile(`${__dirname}/SearchBar.hbs`, (err) => {
     if (err) {
       console.log(err);
       res.end(err.message);

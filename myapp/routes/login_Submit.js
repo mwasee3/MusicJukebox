@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
 	console.log("here");
 	passport.authenticate('local', {
-		successRedirect: '/dashboard',
+		successRedirect: '/SearchBar',
 		failureRedirect: '/'
 	})(req, res, next);
 
