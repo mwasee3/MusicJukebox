@@ -16,7 +16,7 @@ body {
   padding:6px;
   margin-top: 30px;
   margin-right: 10px;
-  margin-left: 8px;
+  margin-left: 200px;
   overflow: hidden;
   background-color: #e9e9e9;
 }
@@ -24,15 +24,21 @@ body {
  
 .search-container {
   float: center;
-  width:100%;
+  width: 70%;
+}
+.search-container label{
+  font-family: Arial;
+  margin-left: 40px;
+  width: 50px;
 }
  
 .search-container input[type=text] {
-  width: 90%;
+  float: none;
+  width: 50%;
   padding: 6px;
   margin-top: 8px;
   margin-right:10px;
-  margin-left:8px;
+  margin-left:50px;
   margin-bottom:10px;
   font-size: 17px;
   border: none;
@@ -44,18 +50,22 @@ body {
   margin-top: 8px;
   margin-right: 10px;
   background: #ddd;
-  font-size: 17px;
+  font-size: 15px;
   border: none;
   cursor: pointer;
 }
  
 .search-container button:hover {
   background: #ccc;
+  
 }
  
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .search-container {
     float: none;
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
   }
   .search-container input[type=text], .search-container button {
     float: none;
@@ -63,7 +73,11 @@ body {
     text-align: left;
     width: 100%;
     margin: 0;
-    padding: 14px;
+    padding: 14x;
+  }
+  .search-container label{
+    width: 100px;
+    text-align: center;
   }
   .search-container input[type=text] {
     border: 1px solid #ccc;  
@@ -80,9 +94,15 @@ body {
  
 <div class="search-container">
   <form method="POST" action="/SearchBarSubmit">
-    <input type="text" placeholder="Search.." name="search">
-    <button type="submit">Submit</button>
-  </form>
+    <label for="artistName">Enter Artist Name: </label>
+    <input type="text" placeholder="eg.. The Weeknd" name="ArtistSearch">
+    <button type="submitArtist">Submit</button>
+    </form>
+    <div>
+    <label for="Song Name">Enter Song Name: </label>
+    <input type="text" placeholder="eg.. Reminder" name="Songsearch">
+    <button type="submitSong">Submit</button>
+    </div>
 </div>
  
 <div style="padding-left:20px">

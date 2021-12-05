@@ -1,7 +1,6 @@
-
 const LocalStrategy = require('passport-local').Strategy;
-var sqlite3 = require('sqlite3').verbose()
-let databaseOperations = require('./database.js');
+//var sqlite3 = require('sqlite3').verbose()
+//let databaseOperations = require('./database.js');
 
 
 module.exports = function(passport) {
@@ -11,7 +10,8 @@ passport.use(new LocalStrategy({
 	usernameField: 'email',
 	passwordField: 'password'
 }, function(username, password, done) {
-	console.log(username);
+	console.log("hereasdfgh");
+	console.log(password);
 //	databaseOperations.authenticateUser(username, password, done);
 }));
 

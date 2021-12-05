@@ -2,10 +2,12 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+const bcrypt = require('bcryptjs');
 var passwordValidator = require('password-validator');
+
 const passport = require('passport');
-let databaseOperations = require('../config/database.js');
-console.log(databaseOperations);
+//let databaseOperations = require('../config/database.js');
+//console.log(databaseOperations);
 
 /* GET home page. */
 router.post('/', function(req, res, next) {
@@ -27,6 +29,7 @@ router.post('/', function(req, res, next) {
 
     var isValid = schema.validate(password)
     console.log(isValid)
+    const hashedPassword = bcrypt.hash(password, 10);
 
     if(isValid===false)
     {
@@ -35,7 +38,9 @@ router.post('/', function(req, res, next) {
     }
 
     else{
-        console.log("first_name: " + first_name + "last_name: " + last_name + " Email: " + email + " Password: " + password);
+        
+
+        console.log("first_name: " + first_name + "last_name: " + last_name + " Email: " + email + " Password: " +hashedPassword);
 
         'use strict';
             var randomValue = Math.random() * 123;
@@ -44,12 +49,12 @@ router.post('/', function(req, res, next) {
             first_name: first_name,
             last_name: last_name, 
             email: email,
-            password: password
+            password: hashedPassword
         }];
         
         let data = JSON.stringify(users);
         fs.writeFileSync('users.json', data);
-        databaseOperations.createProfile(users);
+        //databaseOperations.createProfile(users);
         res.render('confirmation', { first_name : first_name, last_name: last_name});
     }
 

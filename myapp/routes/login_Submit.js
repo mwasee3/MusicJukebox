@@ -11,8 +11,6 @@ router.post('/', (req, res, next) => {
 		successRedirect: '/SearchBar',
 		failureRedirect: '/'
 	})(req, res, next);
-
-
 });
 
 module.exports = router;
