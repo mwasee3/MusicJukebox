@@ -2,7 +2,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 var passwordValidator = require('password-validator');
 
 const passport = require('passport');
@@ -16,7 +16,14 @@ router.post('/', function(req, res, next) {
     var last_name = req.body.last_name;
     var email = req.body.email;
     var password = req.body.password;
+    
+        // bcrypt.hash(password, salt, function(err, hash) {
+        //     if(err){
+        //         console.log("didnt hash");
+        //     }
+        //     password=hash
 
+        // });
     //Enforcing strong password
     var schema = new passwordValidator();
 
@@ -38,20 +45,20 @@ router.post('/', function(req, res, next) {
     }
 
     else{
+        console.log("first_name: " + first_name + "last_name: " + last_name + " Email: " + email + " Password: " + password);
         
-
-        console.log("first_name: " + first_name + "last_name: " + last_name + " Email: " + email + " Password: " +hashedPassword);
-
         'use strict';
             var randomValue = Math.random() * 123;
-        let users = [{ 
+            const salt =  bcrypt.genSaltSync(10);
+        var npassword = bcrypt.hashSync(password, salt);
+        let users = { 
             id: randomValue,
-            first_name: first_name,
-            last_name: last_name, 
+            firstname: first_name,
+            lastname: last_name, 
             email: email,
-            password: hashedPassword
-        }];
-        
+            password: npassword
+        };
+        console.log(users.firstname);
         let data = JSON.stringify(users);
         fs.writeFileSync('users.json', data);
         //databaseOperations.createProfile(users);

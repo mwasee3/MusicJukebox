@@ -10,9 +10,8 @@ passport.use(new LocalStrategy({
 	usernameField: 'email',
 	passwordField: 'password'
 }, function(username, password, done) {
-	console.log("hereasdfgh");
-	console.log(password);
-//	databaseOperations.authenticateUser(username, password, done);
+	console.log(username);
+	databaseOperations.authenticateUser(username, password, done);
 }));
 
 passport.serializeUser(function(user, done) {

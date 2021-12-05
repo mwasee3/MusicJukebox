@@ -6,19 +6,19 @@ const { Console } = require('console');
 
 
 /* GET home page. */
-router.post('/', function(req, res, next) {
+router.post('/',async function(req, res, next) {
     
     var first_name = req.body.ArtistSearch;
     var last_name = req.body.Songsearch;
 
-    const Lyric = createFunction2(first_name.toLowerCase());
-    console.log(Lyric);
+    var Lyric = await createFunction2(first_name.toLowerCase());
+    //console.log(Lyric);
 
     res.render('SearchBar', { artist_name :first_name, lyrics: Lyric});
 
 });
 
-let createFunction2 = (Strings='the weeknd') => {
+let createFunction2 = function(Strings='the weeknd'){
     var data;
     var link = 'http://api.musixmatch.com/ws/1.1/track.search?q_artist=' +Strings +'&page=1&s_track_rating=desc&apikey=ea589f0726cc035d19c71d1f879d9794';
     
@@ -28,7 +28,6 @@ let createFunction2 = (Strings='the weeknd') => {
             console.log("here");
             
             const json= response.data.message.body.track_list;
-            //console.log(json);
 
             data = JSON.stringify(response.data.message.body.track_list);
             
