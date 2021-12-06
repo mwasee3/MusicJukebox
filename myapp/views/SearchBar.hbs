@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="assets/css/public/style.css" />
+<link rel="stylesheet" href="../public/stylesheets/style.css" />
 <style>
 * {box-sizing: border-box;}
  
@@ -85,13 +85,16 @@ body {
 }
 </style>
 </head>
-<body>
+<body class= "sb">
 <header id="header">
-   <a href="/">Home</a>
-      <a href="/signIn" class="active">Sign in</a>
-    <a href="/createAccount">Create an Account</a>
+  <dic class=headboard>
+    <div class="logout">
+      <a href="/">Logout</a>
+    </div>
+  </dic>
+   
 </header>
- 
+ <CENTER><img src="https://images.unsplash.com/photo-1513829596324-4bb2800c5efb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" width 100%></CENTER>
 <div class="search-container">
     <form method="POST" action="/SearchBarSubmit">
       <label for="artistName">Enter Artist Name: </label>
@@ -109,9 +112,11 @@ body {
 </div>
  
 <div style= "padding-left:20px; white-space: pre-wrap">
-  <h2><u>{{artist_name}}</u></h2>
-  <p>{{lyrics}}</p>
-  <a href="url" style="padding-left:20px;">{{Link}}</a>
+  <h2>
+    <CENTER><u>{{artist_name}}</u></CENTER>
+  </h2>
+  <CENTER><p>{{lyrics}}</p></CENTER>
+  <CENTER><a href={{Link}} style="padding-left:20px;">If You cant find the lyrics please Try here</a></CENTER>
 </div>
  
 </body>

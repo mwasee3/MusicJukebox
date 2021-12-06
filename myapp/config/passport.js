@@ -1,7 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;
-//var sqlite3 = require('sqlite3').verbose()
-//let databaseOperations = require('./database.js');
-
+var sqlite3 = require('sqlite3').verbose()
+let databaseOperations = require('./database.js');
+var fs = require('fs');
 
 module.exports = function(passport) {
 console.log("Passport Function triggered");
@@ -11,7 +11,11 @@ passport.use(new LocalStrategy({
 	passwordField: 'password'
 }, function(username, password, done) {
 	console.log(username);
-	//databaseOperations.authenticateUser(username, password, done);
+	databaseOperations.authenticateUser(username, password, done);
+	if(done!=false){
+		databaseOperations.createInstance(username);
+	}
+	fs.writeFileSync('curr.txt', username);
 }));
 
 passport.serializeUser(function(user, done) {

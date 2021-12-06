@@ -9,8 +9,7 @@
 		<title>Sign In</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="../public/stylesheets/style.css" />
 
         <style>
             span.login100-form-title.p-b-26 {
@@ -39,9 +38,19 @@
 
 		<!-- Header -->
 			<header id="header">
-                    <a href="/">Home</a>
+                <div class="dsboard">
+                    <div class="dropdown">
+                        <button class="dropbtn">Menu</button>
+                        <div class="dropdown-content">
+                            <a href="/">Home</a>
+				            <a href="/signIn" class="active">Sign in</a>
+					        <a href="/createAccount">Create an Account</a>
+                        </div>
+                    </div>
+                </div>
+                    {{!-- <a href="/">Home</a>
 				    <a href="/signIn" class="active">Sign in</a>
-					<a href="/createAccount">Create an Account</a>
+					<a href="/createAccount">Create an Account</a> --}}
 			</header>
 
 			<div id="wrapper">
@@ -91,15 +100,6 @@
 					</section>
 
 			</div>
-
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-            <script src="javascripts/main.js"></script>
 
 	</body>
 </html>

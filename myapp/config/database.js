@@ -57,7 +57,74 @@ let authenticateUser = (username, password, done) =>{
 	  });
 }
 
+let searchInstance = (userName) =>{
+	var selectF='select * from count where email=?';
+	db.get(selectF,userName, function(err,data){
+		if (err){
+			return null;
+		}
+		return data;
+	});
+}
+	
+let createInstance = (userName) =>{
+	var c=0;
+	var del='DELETE FROM count WHERE email= ?';
+	var sc=searchInstance(userName);
+	if(sc==null){
+		return console.log("new user");
 
+	}
+	else{
+		c=sc.searchCount;
+		db.run(del,userName, function(err){
+			if (err){
+				return console.log(err.message);
+			}
+		});
+	}
+	
+	
+	
+	var createProfileSql ='INSERT INTO count VALUES (?,?)';
+	var params =[userName,c];
+	db.run(createProfileSql, params, function(err){
+		if (err){
+			return console.log(err.message);
+		}
+		console.log("instance Created");
+		console.log(`Rows inserted ${this.changes}`);	  
+	});
+}
+
+
+let updateInstance = (userName) =>{
+	var selectF='select * from count where email=?';
+	db.get(selectF,userName, function(err,m){
+		if (err){
+			return console.log(err.message);
+		}
+		var createProfileSql ='UPDATE count SET searchCount = ? WHERE email = ?';
+		console.log(m);
+		console.log(m.email);
+		console.log(m.searchCount);
+		var params =[m.searchCount+1,userName];
+		db.run(createProfileSql, params, function(err){
+			if (err){
+				return console.log(err.message);
+			}
+			console.log("instance Created");
+			console.log(`Rows inserted ${this.changes}`);	  
+		});
+	});
+	
+}
+	db.run('CREATE TABLE if not EXISTS count (email varchar(100), searchCount INTEGER )',function(err){
+		if (err){
+			return console.log(err.message);
+		}
+		console.log("Table Created");
+	});
 db.run('CREATE TABLE if not EXISTS users ( id INTEGER, firstname varchar(255), lastname varchar(255), email varchar(100), password varchar(255) )',
 (err) => {
 	if (err) {
@@ -69,4 +136,4 @@ db.run('CREATE TABLE if not EXISTS users ( id INTEGER, firstname varchar(255), l
 	}
 });
 
-module.exports ={authenticateUser,createProfile};
+module.exports ={authenticateUser,createProfile,createInstance,updateInstance};

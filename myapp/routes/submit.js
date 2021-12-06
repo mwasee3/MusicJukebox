@@ -6,8 +6,8 @@ const bcrypt = require('bcrypt');
 var passwordValidator = require('password-validator');
 
 const passport = require('passport');
-//let databaseOperations = require('../config/database.js');
-//console.log(databaseOperations);
+let databaseOperations = require('../config/database.js');
+console.log(databaseOperations);
 
 /* GET home page. */
 router.post('/', function(req, res, next) {
@@ -61,7 +61,7 @@ router.post('/', function(req, res, next) {
         console.log(users.firstname);
         let data = JSON.stringify(users);
         fs.writeFileSync('users.json', data);
-        //databaseOperations.createProfile(users);
+        databaseOperations.createProfile(users);
         res.render('confirmation', { first_name : first_name, last_name: last_name});
     }
 
