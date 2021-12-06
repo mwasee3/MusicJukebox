@@ -4,7 +4,9 @@
 This is a general breakdown but most of the tasks were done by everyone
 
 Afnan Waseem - frontend, data structure
-Naman Jain - API and testing
+
+Naman Jain - API and testing\
+
 Yash Mude - SQLite, backend
 
 # Mission and Goal
