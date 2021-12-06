@@ -36,7 +36,6 @@ router.post('/', function(req, res, next) {
 
     var isValid = schema.validate(password)
     console.log(isValid)
-    const hashedPassword = bcrypt.hash(password, 10);
 
     if(isValid===false)
     {
@@ -51,6 +50,7 @@ router.post('/', function(req, res, next) {
             var randomValue = Math.random() * 123;
             const salt =  bcrypt.genSaltSync(10);
         var npassword = bcrypt.hashSync(password, salt);
+        
         let users = { 
             id: randomValue,
             firstname: first_name,
