@@ -23,6 +23,7 @@ In our project we used Musixmatch API(https://developer.musixmatch.com/documenta
 # URL
 
 # ER Diagram
+![](myapp/ER.JPG)
 
 # Tools and Resources
 https://cs-uic.pages.dev/docs/assignments_cs484/assignment4
