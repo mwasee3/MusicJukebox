@@ -10,7 +10,6 @@ const { Console } = require('console');
 router.post('/',async function(req, res, next) {
     
     var first_name = req.body.ArtistSearch;
-    var last_name = req.body.Songsearch;
 
     axios.get('http://api.musixmatch.com/ws/1.1/track.search?q_artist=' + first_name.toLowerCase() +'&page=1&s_track_rating=desc&apikey=ea589f0726cc035d19c71d1f879d9794')
             .then(function (response) {
