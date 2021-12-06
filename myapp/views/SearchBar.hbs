@@ -93,21 +93,25 @@ body {
 </header>
  
 <div class="search-container">
-  <form method="POST" action="/SearchBarSubmit">
-    <label for="artistName">Enter Artist Name: </label>
-    <input type="text" placeholder="eg.. The Weeknd" name="ArtistSearch">
-    <button type="submitArtist">Submit</button>
+    <form method="POST" action="/SearchBarSubmit">
+      <label for="artistName">Enter Artist Name: </label>
+      <input type="text" placeholder="eg.. The Weeknd" name="ArtistSearch">
+      <button type="submitArtist">Top Songs</button>
+    </form>  
+    <form method="POST" action="/SearchLyricSubmit">
+      <div>
+        <label for="SongName">Enter Song Name: </label>
+        <input type="text" placeholder="eg.. Reminder" name="Songsearch">
+        <button type="submitSong">Submit</button>
     </form>
-    <div>
-    <label for="Song Name">Enter Song Name: </label>
-    <input type="text" placeholder="eg.. Reminder" name="Songsearch">
-    <button type="submitSong">Submit</button>
     </div>
+    
 </div>
  
 <div style= "padding-left:20px; white-space: pre-wrap">
-  <h2>{{artist_name}}</h2>
+  <h2><u>{{artist_name}}</u></h2>
   <p>{{lyrics}}</p>
+  <a href="url" style="padding-left:20px;">{{Link}}</a>
 </div>
  
 </body>

@@ -12,6 +12,7 @@ var makeAccount = require('./routes/createNewAccount');
 var log_in = require('./routes/log_in');
 var SearchBar = require('./routes/SearchBar');
 var SearchSubmit = require('./routes/SearchBar_Submit');
+var SearchLyricsSubmit = require('./routes/SearchBarLyricSubmit');
 var submitLogin = require('./routes/login_Submit');
 
 var session = require('express-session');
@@ -50,6 +51,7 @@ app.use('/signIn', log_in);
 app.use('/SearchBar',SearchBar);
 app.use('/submit', submit);
 app.use('/SearchBarSubmit',SearchSubmit);
+app.use('/SearchLyricSubmit',SearchLyricsSubmit);
 app.use('/loginSubmit', submitLogin);
 app.use('/dashboard', dashboard);
 
