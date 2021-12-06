@@ -3,10 +3,8 @@
 # Team members and tasks
 This is a general breakdown but most of the tasks were done by everyone
 
-Afnan Waseem - frontend, data structure
-
+Afnan Waseem - frontend, backend, Docker and Hosting
 Naman Jain - API and testing
-
 Yash Mude - SQLite, backend
 
 # Mission and Goal
