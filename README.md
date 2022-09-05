@@ -3,9 +3,10 @@
 # Team members and tasks
 This is a general breakdown but most of the tasks were done by everyone
 
-Afnan Waseem - frontend, backend, Docker and Hosting, SQLite, API
+Afnan Waseem - frontend, backend, Docker and Hosting
 
 Naman Jain - API and testing
+Yash Mude - SQLite
 
 # Mission and Goal
 The mission of the our project is to create a full stack web application using a restful API.
